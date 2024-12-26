@@ -72,7 +72,7 @@ export function correctIndents(text: string, indent: string, settings: Settings)
         .map((line, i, textArr) => {
             //Lines, that placed between comments, should not be formatted
             if (settings.skipDocStringsFormat) {
-                if (~line.search(/^\s*'''\s*/) || ~line.search(/^\s*"""\s*/)) {
+                if (~line.search(/^\s*'''\s*/) || ~line.search(/^\s*"""\s*/) || ~line.search(/^\s*```\s*/)) {
                     commentsMode = !commentsMode;
                 } else {
                     if (commentsMode === true) return line;
